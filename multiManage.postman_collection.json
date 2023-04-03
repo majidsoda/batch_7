@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "58f65957-73e1-4615-bf36-d0604e346411",
+		"name": "multiManage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26571608"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 for [login]\", function () {",
+							"    try {",
+							"        pm.expect(pm.response.code).to.equal(200);",
+							"    } catch (err) {",
+							"        console.log(\"Status code is not 200: \" + err);",
+							"        throw new Error(\"Status code is not 200 for [login]\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Status code name has string OK for [login]\", () => {",
+							"  pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Verify Content-type is application Json for [login]\",() =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"})",
+							"",
+							"// Saving token into a variable",
+							"var jsonData = pm.response.json();",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "api.octoperf.com"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-GB,en-US;q=0.9,en;q=0.8"
+					},
+					{
+						"key": "content-type",
+						"value": "application/x-www-form-urlencoded;charset=UTF-8"
+					},
+					{
+						"key": "cookie",
+						"value": "slaask-token-spk-914bb45d-bab2-40eb-a7f5-b9d5dc31679b=33ep6b8b10cyn0e3xn9dqol6yucep5wbqu1f5vw2yjsa; _gid=GA1.2.1415989912.1680360308; __stripe_mid=274322db-0269-4a64-8693-f5b62ca3d271b62312; __stripe_sid=73b03c87-dfa2-4b7a-822e-1fda8c4f368c3c1548; slaask-token-5a5eed8e193aa4456766852b0d3bdd64=x737dzb88mcapfn161bpe4bv5ynqmto37qarwb1thrx; _ga=GA1.2.1989653642.1680360209; _gat=1; _ga_Q0Q7BY8NRR=GS1.1.1680360209.1.1.1680362098.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://api.octoperf.com"
+					},
+					{
+						"key": "referer",
+						"value": "https://api.octoperf.com/app/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.octoperf.com/public/users/login?username=majidsoda@gmail.com&password=Test1234",
+					"protocol": "https",
+					"host": [
+						"api",
+						"octoperf",
+						"com"
+					],
+					"path": [
+						"public",
+						"users",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "majidsoda@gmail.com"
+						},
+						{
+							"key": "password",
+							"value": "Test1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_member-of",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 for [memeber-of]\", function () {",
+							"    try {",
+							"        pm.expect(pm.response.code).to.equal(200);",
+							"    } catch (err) {",
+							"        console.log(\"Status code is not 200: \" + err);",
+							"        throw new Error(\"Status code is not 200 for [login]\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Status code name has string OK for [memeber-of]\", () => {",
+							"  pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Verify Content-type is application Json for [memeber-of]\",() =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"})",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"console.log(jsonData[0].id)",
+							"console.log(jsonData[0].userId)",
+							"postman.setEnvironmentVariable(\"id\", jsonData[0].id);",
+							"postman.setEnvironmentVariable(\"userId\", jsonData[0].userId);",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJvY3RvcGVyZiIsImlkIjoiaWhSWVBZY0JUZXdFZklnSng2WlEiLCJleHAiOjE2ODA1MzA1MDIsImlhdCI6MTY4MDQ0NDEwMiwiaGFzaCI6IjJkMjY4ZDJlMGY4Njk4NGM3NGYyYmI1NmEyZDM4ZWI1In0.PZiu4en4hUL_asVazLxb_pIlpXnWbhVDX1wW9T_Tk5U"
+					}
+				],
+				"url": {
+					"raw": "https://api.octoperf.com/workspaces/member-of",
+					"protocol": "https",
+					"host": [
+						"api",
+						"octoperf",
+						"com"
+					],
+					"path": [
+						"workspaces",
+						"member-of"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST_createProject",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201 for createProject\", function () {",
+							"    try {",
+							"        pm.expect(pm.response.code).to.equal(201);",
+							"    } catch (err) {",
+							"        console.log(\"Status code is not 201: \" + err);",
+							"        throw new Error(\"Status code is not 201\");",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"Status code name has string Created\", () => {",
+							"  pm.response.to.have.status(\"Created\");",
+							"});",
+							"",
+							"pm.test(\"verify content type is Json body for [login]\", function() {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test(\"Verify Content-type is application Json for [member-of]\",() =>{",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "api.octoperf.com"
+					},
+					{
+						"key": "accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "accept-language",
+						"value": "en-GB,en-US;q=0.9,en;q=0.8"
+					},
+					{
+						"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+						"key": "authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJvY3RvcGVyZiIsImlkIjoiaWhSWVBZY0JUZXdFZklnSng2WlEiLCJleHAiOjE2ODA1MzA5NjEsImlhdCI6MTY4MDQ0NDU2MSwiaGFzaCI6IjJkMjY4ZDJlMGY4Njk4NGM3NGYyYmI1NmEyZDM4ZWI1In0.31WAcv2D3uxRW4mQ5haRLPTlsoW_yfbC9_1WfHp81EY"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "cookie",
+						"value": "slaask-token-spk-914bb45d-bab2-40eb-a7f5-b9d5dc31679b=33ep6b8b10cyn0e3xn9dqol6yucep5wbqu1f5vw2yjsa; _gid=GA1.2.1415989912.1680360308; __stripe_mid=274322db-0269-4a64-8693-f5b62ca3d271b62312; slaask-token-5a5eed8e193aa4456766852b0d3bdd64=x737dzb88mcapfn161bpe4bv5ynqmto37qarwb1thrx; _ga=GA1.2.1989653642.1680360209; _ga_Q0Q7BY8NRR=GS1.1.1680447127.4.0.1680447127.0.0.0"
+					},
+					{
+						"key": "origin",
+						"value": "https://api.octoperf.com"
+					},
+					{
+						"key": "referer",
+						"value": "https://api.octoperf.com/app/"
+					},
+					{
+						"key": "sec-ch-ua",
+						"value": "\"Google Chrome\";v=\"111\", \"Not(A:Brand\";v=\"8\", \"Chromium\";v=\"111\""
+					},
+					{
+						"key": "sec-ch-ua-mobile",
+						"value": "?0"
+					},
+					{
+						"key": "sec-ch-ua-platform",
+						"value": "\"macOS\""
+					},
+					{
+						"key": "sec-fetch-dest",
+						"value": "empty"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"\",\n    \"created\": \"2023-04-02T14:51:55.777Z\",\n    \"lastModified\": \"2023-04-02T14:51:55.777Z\",\n    \"userId\": \"{{userId}}\",\n    \"workspaceId\": \"{{id}}\",\n    \"name\": \"nurses on demand\",\n    \"description\": \"for nurses only\",\n    \"type\": \"DESIGN\",\n    \"tags\": []\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.octoperf.com/design/projects",
+					"protocol": "https",
+					"host": [
+						"api",
+						"octoperf",
+						"com"
+					],
+					"path": [
+						"design",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
